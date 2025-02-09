@@ -3,7 +3,7 @@ import { EndpointId } from '@layerzerolabs/lz-definitions'
 
 const polygonContract = {
     eid: EndpointId.POLYGON_V2_MAINNET,
-    contractName: 'WrappedForLootAndGlory',
+    contractName: 'ForLootAndGloryToken',
 }
 
 const mumbaiContract = {
