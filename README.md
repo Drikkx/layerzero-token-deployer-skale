@@ -68,6 +68,11 @@ npx hardhat lz:deploy --help
 
 By following these steps, you can focus more on creating innovative omnichain solutions and less on the complexities of cross-chain communication.
 
+
+```bash
+npx hardhat verify --network <network> <contractAddress> <constructorArguments>
+```
+npx hardhat verify --network arbitrumTestnet 0xAE491ca9085b4C3F22fC22bF59b692E3A71F7766  "Token", "TKN", "0x6EDCE65403992e310A62460808c4b910D972f10f", "0x8Dab3C844b0d33Ba3CC74a302C7813A11506502D"
 <br></br>
 
 <p align="center">
