@@ -6,19 +6,22 @@ import '@layerzerolabs/toolbox-hardhat'
 import { utils } from "ethers";
 import { Options } from "@layerzerolabs/lz-v2-utilities";
 import { EndpointId } from '@layerzerolabs/lz-definitions';
+import TokenArb from '../deployments/arbitrumTestnet/Token.json'
+import TokenEuropa from '../deployments/europaTestnet/Token.json'
 
 async function main() {
-    // Charger ou déployer vos contrats ici. Pour cet exemple, nous allons simplement charger des contrats déjà déployés.
-    const TokenAddressSource = "0x8a81F441ca4383beB6D1161504dEE0b0a7Af47bb";
-    const TokenAddressDestination = "0x8a81F441ca4383beB6D1161504dEE0b0a7Af47bb";
+    // bridge arb > europa
     const TokenFactory = await hre.ethers.getContractFactory("Token");
-    const WrappedForLootAndGlory = TokenFactory.attach(TokenAddressSource);
+    const TokenSource = TokenFactory.attach(TokenArb.address);
 
     // Vous devez avoir les adresses des comptes participants.
     const [signer] = await ethers.getSigners();
 
     // Préparer les paramètres pour le transfert.
     const tokensToSend = utils.parseEther("1");
+    const mintTx = await TokenSource.mint(tokensToSend, signer.address)
+    const mintReceipt = await mintTx.wait()
+    console.log('Hash Mint : ', mintReceipt.transactionHash)
     const destinationChainId = EndpointId.SKALE_V2_TESTNET
     const destinationAddress = signer.address; // Adresse de destination sur la chaîne B.
 
@@ -37,9 +40,9 @@ async function main() {
     ];
 
     // Obtenir le frais natif pour l'opération de send.
-    const [nativeFee] = await WrappedForLootAndGlory.quoteSend(sendParam, false);
+    const [nativeFee] = await TokenSource.quoteSend(sendParam, false);
     console.log(`Sending ${tokensToSend.toString()} tokens from Contract A to Contract B`);
-    await WrappedForLootAndGlory.send(sendParam, [nativeFee, 0], signer.address, { value: nativeFee });
+    await TokenSource.send(sendParam, [nativeFee, 0], signer.address, { value: nativeFee });
 
     console.log("Transfer successful!");
 }

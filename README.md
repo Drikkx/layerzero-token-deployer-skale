@@ -47,13 +47,13 @@ After deploying, set up the peer contracts on different networks and bridge toke
 
 ```bash
 # Setting peer on Mumbai network
-npx hardhat run ./scripts/peerMumbai.ts --network mumbai
+npx hardhat run ./scripts/peerArbitrum.ts --network arbitrumTestnet
 
 # Setting peer on Europa network
-npx hardhat run ./scripts/peerEuropa.ts --network europa
+npx hardhat run ./scripts/peerEuropa.ts --network europaTestnet
 
 # Bridging tokens from Contract A to Contract B on Mumbai network
-npx hardhat run ./scripts/bridge.ts --network mumbai
+npx hardhat run ./scripts/bridge.ts --network arbitrumTestnet
 ```
 
 Note: You might encounter warnings about `

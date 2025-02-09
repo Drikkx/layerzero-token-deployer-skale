@@ -5,18 +5,17 @@ import '@nomiclabs/hardhat-ethers'
 import '@layerzerolabs/toolbox-hardhat'
 import { utils } from "ethers";
 import { EndpointId } from '@layerzerolabs/lz-definitions'
+import Token from '../deployments/europaTestnet/Token.json'
 
 async function main() {
-    const WrappedForLootAndGloryAddress = "0x22Aa29c2a15cea061f7d7910CA908909164a98C3";
-    const TokenAddress = "0x8a81F441ca4383beB6D1161504dEE0b0a7Af47bb";
     const TokenFactory = await hre.ethers.getContractFactory("Token");
-    const Token = TokenFactory.attach(TokenAddress);
+    const TokenEuropa = TokenFactory.attach(Token.address);
 
-    const peerAddress = utils.zeroPad(WrappedForLootAndGloryAddress, 32);
-    const peerChainId = EndpointId.POLYGON_V2_TESTNET;
+    const peerAddress = utils.zeroPad(Token.address, 32);
+    const peerChainId = EndpointId.ARBSEP_V2_TESTNET;
 
     console.log(`Setting peer on ${peerChainId} to ${peerAddress}`);
-    await Token.setPeer(peerChainId, peerAddress);
+    await TokenEuropa.setPeer(peerChainId, peerAddress);
 
     console.log("Peer set!");
 

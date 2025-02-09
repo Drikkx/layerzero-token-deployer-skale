@@ -51,28 +51,13 @@ const config: HardhatUserConfig = {
         ],
     },
     networks: {
-        polygon: {
-            eid: EndpointId.POLYGON_V2_MAINNET,
-            url: 'https://polygon-rpc.com',
-            accounts,
-        },
-        europa: {
-            eid: EndpointId.SKALE_V2_MAINNET,
-            url: "https://mainnet.skalenodes.com/v1/elated-tan-skat",
-            accounts,
-        },
-        mumbai: {
-            eid: EndpointId.POLYGON_V2_TESTNET,
-            url: 'https://rpc-mumbai.matic.today',
-            accounts,
-        },
         europaTestnet: {
             eid: EndpointId.SKALE_V2_TESTNET,
             url: 'https://testnet.skalenodes.com/v1/juicy-low-small-testnet',
             accounts,
         },
         arbitrumTestnet: {
-            eid: EndpointId.ARBITRUM_V2_TESTNET,
+            eid: EndpointId.ARBSEP_V2_TESTNET,
             url: 'https://sepolia-rollup.arbitrum.io/rpc',
             accounts,
         }
