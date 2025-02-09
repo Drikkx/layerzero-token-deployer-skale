@@ -71,6 +71,11 @@ const config: HardhatUserConfig = {
             url: 'https://testnet.skalenodes.com/v1/juicy-low-small-testnet',
             accounts,
         },
+        arbitrumTestnet: {
+            eid: EndpointId.ARBITRUM_V2_TESTNET,
+            url: 'https://sepolia-rollup.arbitrum.io/rpc',
+            accounts,
+        }
     },
     etherscan: {
         // Votre clé API Etherscan

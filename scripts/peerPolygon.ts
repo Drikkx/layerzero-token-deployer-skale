@@ -8,15 +8,15 @@ import { EndpointId } from '@layerzerolabs/lz-definitions'
 
 async function main() {
     const WrappedForLootAndGloryAddress = "0x22Aa29c2a15cea061f7d7910CA908909164a98C3";
-    const ForLootAndGloryTokenAddress = "0x8a81F441ca4383beB6D1161504dEE0b0a7Af47bb";
-    const ForLootAndGloryTokenFactory = await hre.ethers.getContractFactory("ForLootAndGloryToken");
-    const ForLootAndGloryToken = ForLootAndGloryTokenFactory.attach(ForLootAndGloryTokenAddress);
+    const TokenAddress = "0x8a81F441ca4383beB6D1161504dEE0b0a7Af47bb";
+    const TokenFactory = await hre.ethers.getContractFactory("Token");
+    const Token = TokenFactory.attach(TokenAddress);
 
     const peerAddress = utils.zeroPad(WrappedForLootAndGloryAddress, 32);
     const peerChainId = EndpointId.SKALE_V2_TESTNET;
 
     console.log(`Setting peer on ${peerChainId} to ${peerAddress}`);
-    await ForLootAndGloryToken.setPeer(peerChainId, peerAddress);
+    await Token.setPeer(peerChainId, peerAddress);
 
     console.log("Peer set!");
 

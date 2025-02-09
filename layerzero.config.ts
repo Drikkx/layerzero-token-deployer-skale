@@ -3,34 +3,39 @@ import { EndpointId } from '@layerzerolabs/lz-definitions'
 
 const polygonContract = {
     eid: EndpointId.POLYGON_V2_MAINNET,
-    contractName: 'ForLootAndGloryToken',
+    contractName: 'Token',
 }
 
 const mumbaiContract = {
     eid: EndpointId.POLYGON_V2_TESTNET,
-    contractName: 'ForLootAndGloryToken'
+    contractName: 'Token'
 }
 
 const skaleEuropaContract = {
     eid: EndpointId.SKALE_V2_MAINNET,
-    contractName: 'ForLootAndGloryToken'
+    contractName: 'Token'
 }
 
 const skaleEuropaTestnetContract = {
     eid: EndpointId.SKALE_V2_TESTNET,
-    contractName: 'ForLootAndGloryToken'
+    contractName: 'Token'
+}
+
+const arbitrumTestnetContract = {
+    eid: EndpointId.ARBITRUM_V2_TESTNET,
+    contractName: 'Token'
 }
 
 const arbitrumContract = {
     eid: EndpointId.ARBITRUM_V2_MAINNET,
-    contractName: 'ForLootAndGloryToken'
+    contractName: 'Token'
 }
 
 
 export default {
     contracts: [
         {
-            contract: polygonContract,
+            contract: polygonContract
         },
         {
             contract: skaleEuropaContract
@@ -43,6 +48,9 @@ export default {
         },
         {
             contract: skaleEuropaTestnetContract
+        },
+        {
+            contract: arbitrumTestnetContract
         }
     ],
     connections: [
@@ -77,6 +85,14 @@ export default {
         {
             from: skaleEuropaTestnetContract,
             to: mumbaiContract
+        },
+        {
+            from: skaleEuropaTestnetContract,
+            to: arbitrumTestnetContract
+        },
+        {
+            from: arbitrumTestnetContract,
+            to: skaleEuropaTestnetContract
         },
 
     ],
